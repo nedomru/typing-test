@@ -59,9 +59,34 @@ export default function Header() {
         const theme = localStorage.getItem("theme") || "default";
         const type = localStorage.getItem("type") || "words";
         const time = parseInt(localStorage.getItem("time") || "60", 10);
-        import(`wordlists/${type}.json`).then((words) =>
-            dispatch(setWordList(words.default))
-        );
+        import(`wordlists/${type}.json`).then((words) => {
+            const punctuations = [".", ",", "!", "?", ";", ":"];
+            const originalList = words.default;
+
+            // Modified list with punctuation after every 1–8 words
+            const modifiedList = [];
+            let count = 0;
+
+            for (let i = 0; i < originalList.length; i++) {
+                modifiedList.push(originalList[i]);
+                count++;
+
+                // Random number between 1 and 8
+                const rand = Math.floor(Math.random() * 8) + 1;
+
+                if (count === rand) {
+                    modifiedList.push(
+                        punctuations[
+                            Math.floor(Math.random() * punctuations.length)
+                        ]
+                    );
+                    count = 0;
+                }
+            }
+
+            dispatch(setWordList(modifiedList));
+        });
+
         dispatch(timerSet(time));
         dispatch(setType(type));
         dispatch(setTime(time));
