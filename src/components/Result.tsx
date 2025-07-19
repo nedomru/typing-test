@@ -21,7 +21,9 @@ export default function Result() {
         return false;
     });
 
-    const wpm = ((correctChars + spaces) * 60) / timeLimit / 5;
+    const correctWords = result.filter((x) => x).length;
+    const wpm = (correctWords * 60) / timeLimit;
+
     const cpm = ((correctChars + spaces) * 60) / timeLimit;
     const accuracy = typedChars > 0 ? (correctChars / typedChars) * 100 : 0;
 
