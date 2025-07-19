@@ -43,14 +43,7 @@ export const options: Options = {
         "pink-sky",
         "red-season",
     ],
-    type: [
-        "русский",
-        "русский_1к",
-        "русский_10к",
-        "русский_25к",
-        "русский_50к",
-        "русский_375к",
-    ],
+    type: ["русский"],
 };
 
 export default function Header() {
