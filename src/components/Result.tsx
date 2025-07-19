@@ -23,20 +23,22 @@ export default function Result() {
                 <tbody>
                     <tr>
                         <td colSpan={2} align="center">
-                            <h1>{Math.round(wpm) + " wpm"}</h1>
+                            <h1>{Math.round(wpm) + " слов в минуту"}</h1>
                         </td>
                     </tr>
                     <tr>
-                        <th>Correct Words:</th>
+                        <th>Правильных слов:</th>
                         <td>{result.filter((x) => x).length}</td>
                     </tr>
                     <tr className="wrong">
-                        <th>Incorrect Words:</th>
+                        <th>Неправильных слов:</th>
                         <td>{result.filter((x) => !x).length}</td>
                     </tr>
                     <tr>
                         <td colSpan={2} align="center">
-                            <button onClick={() => resetTest()}>Restart</button>
+                            <button onClick={() => resetTest()}>
+                                Перезапуск
+                            </button>
                         </td>
                     </tr>
                 </tbody>
