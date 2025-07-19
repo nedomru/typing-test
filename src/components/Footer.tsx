@@ -35,9 +35,7 @@ export default function Footer() {
         fetch(URL)
             .then((res) => res.json())
             .then((data: Contributor[]) =>
-                data.filter(
-                    (contributor) => contributor.login !== "slmnsh"
-                )
+                data.filter((contributor) => contributor.login !== "slmnsh")
             )
             .then((filtered) => setContributors(filtered));
     }, []);
@@ -45,56 +43,19 @@ export default function Footer() {
     return (
         <div className={`bottom-area ${timerId ? "hidden" : ""}`}>
             <span className="hint">
-                <kbd>Ctrl</kbd> + <kbd>k</kbd> to open command pallet
+                <kbd>Ctrl</kbd> + <kbd>k</kbd> (<kbd>Ctrl</kbd> + <kbd>л</kbd>)
+                для открытия команд
             </span>
             <span className="hint">
-                <kbd>Tab</kbd> to restart test
+                <kbd>Tab</kbd> для перезапуска теста
             </span>
             <footer>
                 <a
                     target="_blank"
                     rel="noreferrer"
-                    href="https://www.github.com/slmnsh/typing-test">
+                    href="https://www.github.com/nedomru/typing-test">
                     <span>&lt;/&gt;</span> github
                 </a>
-                <span>
-                    created by{" "}
-                    <a
-                        target="_blank"
-                        rel="noreferrer"
-                        href="https://www.github.com/slmnsh">
-                        @slmn-sh
-                    </a>
-                </span>
-                {showList ? (
-                    <div className="contributor-list" onBlur={console.log}>
-                        <h2>contributors</h2>
-                        {contributors.map((contributor) => (
-                            <a
-                                className="contributor"
-                                href={contributor.html_url}
-                                target="_blank"
-                                rel="noreferrer"
-                                key={contributor.node_id}>
-                                <img
-                                    height={50}
-                                    width={50}
-                                    src={contributor.avatar_url}
-                                    alt={`${contributor.login}'s avatar`}
-                                />
-                                <div className="contributor-details">
-                                    <div>@{contributor.login}</div>
-                                    <div>
-                                        {contributor.contributions} commits
-                                    </div>
-                                </div>
-                            </a>
-                        ))}
-                    </div>
-                ) : null}
-                <button onClick={() => setShowList((s) => !s)}>
-                    {showList ? "x close" : "{} contributors"}
-                </button>
             </footer>
         </div>
     );

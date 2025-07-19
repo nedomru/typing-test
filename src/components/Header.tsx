@@ -44,13 +44,12 @@ export const options: Options = {
         "red-season",
     ],
     type: [
-        "words",
-        "hard-words",
-        "sentences",
-        "numbers",
-        "got",
-        "javascript",
-        "python",
+        "русский",
+        "русский_1к",
+        "русский_10к",
+        "русский_25к",
+        "русский_50к",
+        "русский_375к",
     ],
 };
 
@@ -155,7 +154,7 @@ export default function Header() {
     return (
         <header className={timerId ? "hidden" : undefined}>
             <a href="." className="brand">
-                typing-test
+                Тест печати
             </a>
             <div className="buttons">
                 {Object.entries(options).map(([option, choices]) => (
