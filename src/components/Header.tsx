@@ -26,23 +26,7 @@ interface AnimationProps {
 
 export const options: Options = {
     time: [60],
-    theme: [
-        "default",
-        "mkbhd",
-        "mocha",
-        "coral",
-        "ocean",
-        "azure",
-        "forest",
-        "rose-milk",
-        "amethyst",
-        "amber",
-        "terminal",
-        "vscode",
-        "mountain",
-        "pink-sky",
-        "red-season",
-    ],
+    theme: ["темная", "светлая"],
     type: ["русский"],
 };
 
@@ -56,7 +40,7 @@ export default function Header() {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        const theme = localStorage.getItem("theme") || "default";
+        const theme = localStorage.getItem("theme") || "темная";
         const type = localStorage.getItem("type") || "words";
         const time = parseInt(localStorage.getItem("time") || "60", 10);
         import(`wordlists/${type}.json`).then((words) =>
