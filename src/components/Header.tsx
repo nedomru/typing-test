@@ -13,9 +13,7 @@ import "stylesheets/Header.scss";
 import "stylesheets/AnimatedTheme.scss";
 
 export interface Options {
-    time: number[];
     theme: string[];
-    type: string[];
 }
 
 interface AnimationProps {
@@ -25,9 +23,13 @@ interface AnimationProps {
 }
 
 export const options: Options = {
-    time: [60],
     theme: ["темная", "светлая"],
-    type: ["русский"],
+};
+
+const translations = {
+    time: "время",
+    theme: "тема",
+    type: "тип",
 };
 
 export default function Header() {
@@ -41,7 +43,7 @@ export default function Header() {
 
     useEffect(() => {
         const theme = localStorage.getItem("theme") || "темная";
-        const type = localStorage.getItem("type") || "words";
+        const type = localStorage.getItem("type") || "русский";
         const time = parseInt(localStorage.getItem("time") || "60", 10);
         import(`wordlists/${type}.json`).then((words) =>
             dispatch(setWordList(words.default))
@@ -132,12 +134,12 @@ export default function Header() {
     return (
         <header className={timerId ? "hidden" : undefined}>
             <a href="." className="brand">
-                Тест печати
+                <img src="/logo.svg" alt="ДОМ.РУ" className="logo" />
             </a>
             <div className="buttons">
                 {Object.entries(options).map(([option, choices]) => (
                     <div key={option} className={option}>
-                        {option}:
+                        {translations[option as keyof typeof translations]}:
                         {choices.map((choice: string) => (
                             <button
                                 className="mini"
