@@ -1,7 +1,21 @@
+version: "3.8"
+
 services:
-    typing-test:
-        container_name: "typing-test"
-        build: .
+    caddy:
+        image: caddy:latest
+        container_name: caddy
         ports:
             - "80:80"
+            - "443:443"
+        volumes:
+            - ./Caddyfile:/etc/caddy/Caddyfile
+            - ./caddy_data:/data
+            - ./caddy_config:/config
+        restart: unless-stopped
+
+    typing-test:
+        build: .
+        container_name: typing-test
+        expose:
+            - "80"
         restart: unless-stopped
