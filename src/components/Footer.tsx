@@ -15,12 +15,12 @@ export default function Footer() {
                 <kbd>Tab</kbd> для перезапуска теста
             </span>
             <footer>
-                <a
-                    target="_blank"
-                    rel="noreferrer"
-                    href="https://www.github.com/nedomru/typing-test">
-                    <span>&lt;/&gt;</span> github
-                </a>
+                {/*<a*/}
+                {/*    target="_blank"*/}
+                {/*    rel="noreferrer"*/}
+                {/*    href="https://www.github.com/nedomru/typing-test">*/}
+                {/*    <span>&lt;/&gt;</span> github*/}
+                {/*</a>*/}
             </footer>
         </div>
     );
