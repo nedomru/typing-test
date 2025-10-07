@@ -1,5 +1,6 @@
 services:
     typing-test:
+        container_name: "typing-test"
         build: .
         ports:
             - "80:80"
